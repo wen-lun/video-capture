@@ -1,0 +1,41 @@
+{
+  "name": "video-capture",
+  "version": "1.0.0",
+  "description": "基于h5 canvas的视频快照插件",
+  "main": "lib/video-capture.js",
+  "types": "lib/video-capture.d.ts",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "scripts": {
+    "lib": "tsc --lib dom,es2015 --strict false --target es5 --declaration true --declarationDir lib --outDir lib src/video-capture.ts",
+    "uglify": "uglifyjs dist/video-capture.js -o dist/video-capture.min.js",
+    "build": "webpack & npm run uglify",
+    "all": "npm run build & npm run lib",
+    "release": "npm run lib & npm publish"
+  },
+  "keywords": [
+    "video-snapshot",
+    "snapshot",
+    "capture",
+    "视频快照",
+    "视频截图"
+  ],
+  "author": "wenlun",
+  "license": "ISC",
+  "devDependencies": {
+    "ts-loader": "^3.1.1",
+    "typescript": "^3.2.2",
+    "uglify-js": "^3.4.9",
+    "webpack": "^3.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/destiny-wenlun/video-capture.git"
+  },
+  "bugs": {
+    "url": "https://github.com/destiny-wenlun/video-capture/issues"
+  },
+  "homepage": "https://github.com/destiny-wenlun/video-capture#readme"
+}
