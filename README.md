@@ -3,7 +3,7 @@
 
 # 1.安装
 * &lt;script&gt;标签引入"dist/video-capture.js"或"dist/video-capture.min.js"
-+ 使用npm，运行命令：npm install --save video-capture
++ 使用npm，运行命令：npm install -D video-capture
 # 2.例子
 
 * npm使用
