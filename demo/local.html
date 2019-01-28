@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>栗子 —— 本地视频资源</title>
+    <style>
+        img {
+            width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input id="inputFile" type="file" />
+        <input id="input" style="width:100px" value="1" /> 秒处画面
+        <button id="btn">渲染</button>
+        <div style="padding-top:5px;">
+            <img id="preview" />
+        </div>
+    </div>
+    <script src="../dist/video-capture.min.js"></script>
+    <script>
+        let vc = null;
+        document.getElementById("inputFile").onchange = function ({ target }) {
+            let [file] = target.files;
+            if (!/.*\.mp4$/.test(file.name)) alert("请选择mp4视频文件");
+            vc = new VideoCapture(file);
+            vc.capture(1, "preview");
+        }
+        document.getElementById("btn").onclick = function () {
+            let value = document.getElementById("input").value;
+            if (isNaN(value)) alert("请输入数字");
+            if (value > 0) vc.capture(value, "preview");
+        }
+    </script>
+</body>
+
+</html>

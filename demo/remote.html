@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>栗子 —— 远程连接</title>
+    <style>
+        img {
+            width: 400px;
+        }
+
+        .title {
+            padding: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="title">1、捕获20秒处的画面</div>
+        <img id="preview1" />
+    </div>
+    <div>
+        <div class="title">2、捕获50%处的画面</div>
+        <img id="preview2" />
+    </div>
+    <div>
+        <div class="title">3、捕获30%处的画面</div>
+        <img id="preview3" />
+    </div>
+    <div style="padding-top:20px;">
+        <div class="title">3、动态指定捕获的画面</div>
+        <input id="input" style="width:100px" value="1" /> 秒处画面
+        <button id="btn">渲染</button>
+        <div style="padding-top:5px;">
+            <img id="preview4" />
+        </div>
+    </div>
+    <script src="../dist/video-capture.min.js"></script>
+    <script>
+        (async function () {
+            //1、捕获20s处的画面，并使用preview1显示出来，第二个参数可传img dom对象，如：xxx.capture(20, document.getElementById("preview1"))
+            new VideoCapture("https://vjs.zencdn.net/v/oceans.mp4").capture(20, "preview1");
+
+            //2、捕获50%处的画面
+            new VideoCapture("https://vjs.zencdn.net/v/oceans.mp4").capture("50%", "preview2");
+
+            //3、捕获30%处的画面,并获取dataURL, width, height
+            let { dataURL, width, height } = await new VideoCapture("https://vjs.zencdn.net/v/oceans.mp4").capture("20%");
+            console.log("画面宽度：" + width + " 画面高度：" + height);
+            document.getElementById("preview3").src = dataURL;
+
+            //4、动态指定捕获的画面
+            let vc4 = new VideoCapture("https://vjs.zencdn.net/v/oceans.mp4");
+            vc4.capture(1, "preview4");
+            document.getElementById("btn").onclick = function () {
+                let value = document.getElementById("input").value;
+                if (isNaN(value)) alert("请输入数字");
+                if (value > 0) vc4.capture(value, "preview4");
+            }
+        })();
+    </script>
+</body>
+
+</html>
