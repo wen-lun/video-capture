@@ -1,6 +1,6 @@
 {
   "name": "video-capture",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "基于h5 canvas的视频快照插件",
   "main": "lib/video-capture.js",
   "types": "lib/video-capture.d.ts",

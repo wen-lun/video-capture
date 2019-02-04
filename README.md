@@ -14,7 +14,7 @@ async test(){
     //dataURL 捕获画面的base64
     //width画面宽
     //height画面高
-    let { dataURL, width, height } = new VideoCapture("https://vjs.zencdn.net/v/oceans.mp4").capture("10%");
+    let { dataURL, width, height } = await new VideoCapture("https://vjs.zencdn.net/v/oceans.mp4").capture("10%");
 
     document.getElementById("imgId").src = dataURL;
 }
