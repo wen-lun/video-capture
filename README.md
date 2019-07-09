@@ -8,7 +8,7 @@
 
 * npm使用
 ``` javascript
-import VideoCapture form 'video-capture'
+import VideoCapture from 'video-capture'
 
 async test(){
     //dataURL 捕获画面的base64
